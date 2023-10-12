@@ -1,0 +1,672 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/** end reset css**/
+body {
+	max-width: 1140px;
+	margin: auto;
+	font-family: 'Work Sans';
+	font-size: 14px;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0
+}
+
+section {
+	margin: 50px 0
+}
+
+h1 {
+	display: flex;
+	flex-direction: column;
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C
+}
+
+h1>span {
+	font-family: 'Work Sans';
+	font-size: 10px;
+	letter-spacing: 0.1em;
+	;
+}
+
+h2 {
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154
+}
+
+nav ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+
+}
+
+nav li {
+	padding: 0 10px;
+	font-size: 1.2em;
+}
+
+:is(a, li):hover {
+	color: #B1663C;
+}
+
+a {
+	list-style: none;
+	text-decoration: none;
+	color: black;
+}
+
+#introduction {
+	display: flex;
+	align-items: center;
+}
+
+#introduction figure {
+	flex: 1
+}
+
+#introduction img {
+	display: block;
+	margin: auto;
+	width: 80%;
+}
+
+#introduction article {
+	flex: 1
+}
+
+#introduction h2 {
+	margin-bottom: 1em;
+}
+
+#introduction p {
+	margin-bottom: 0.5em;
+}
+
+#portfolio h2 {
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+
+
+
+/* Partie trie*/
+.trie {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-bottom: 3.75rem;
+}
+
+.trie button {
+	background-color: white;
+	color: #1D6154;
+	font-size: 1rem;
+	font-weight: 700;
+	border-radius: 3.75rem;
+	border: 1px solid #1D6154;
+	padding: 0.56rem 0.94rem 0.56rem 0.94rem;
+
+}
+
+.trie button:hover {
+	background-color: #1D6154;
+	color: white;
+}
+
+/* End trie*/
+.gallery {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+}
+
+.gallery img {
+
+	width: 100%;
+}
+
+#contact {
+	width: 50%;
+	margin: auto;
+}
+
+#contact>* {
+	text-align: center;
+
+}
+
+#contact h2 {
+	margin-bottom: 20px;
+}
+
+#contact form {
+	text-align: left;
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#contact input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#contact label {
+	margin: 2em 0 1em 0;
+}
+
+#contact textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+input[type="submit"] {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin: 2em auto;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px;
+}
+
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2em
+}
+
+/* Connexion*/
+#connexion form {
+	display: flex;
+	flex-direction: column;
+}
+
+#connexion {
+	width: 50%;
+	margin: auto;
+}
+
+#connexion h2 {
+	color: #1D6154;
+	text-align: center;
+	font-family: Syne;
+	font-size: 1.875rem;
+	font-weight: 700;
+	margin-top: 3.5rem;
+
+}
+
+#connexion input {
+	background: #FFF;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	height: 3.1875rem;
+	border: none;
+}
+
+#connexion [type="submit"] {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin: 2em auto;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px;
+	cursor: pointer;
+}
+
+
+label {
+	margin-bottom: 0.5rem;
+	margin-top: 1rem;
+}
+
+.mot-oublie a {
+	display: flex;
+	color: #3D3D3D;
+	font-size: 0.875rem;
+	font-weight: 500;
+	text-decoration-line: underline;
+	width: 25%;
+	margin: auto;
+	margin-top: 2rem;
+}
+
+.tous,
+.objet,
+.apprt,
+.hotr {
+	cursor: pointer;
+}
+
+/* module admin */
+
+.modal_adm {
+	position: fixed;
+	display: flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 2rem;
+	background-color: black;
+}
+
+.btn-edit,
+.edit {
+	display: flex;
+	color: #FFF;
+	gap: .6rem;
+}
+
+.fa_Edit {
+	display: flex;
+	gap: 1rem;
+}
+
+.admin_edit {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: .8rem;
+	margin-bottom: 2rem;
+}
+
+/*Add photo*/
+.add_picture {
+	border-radius: 3.75rem;
+	background: #1D6154;
+	width: 14.8125rem;
+	height: 2.25rem;
+	color: #FFF;
+	border: none;
+	margin: 2rem 0 0 1rem;
+	margin: 0 auto;
+	margin-top:2.36rem ;
+	cursor: pointer;
+	
+}
+
+.modul_add {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.08);
+}
+
+.exited {
+	position: absolute;
+	top: 2rem;
+	top: 1rem;
+	right: 2rem;
+}
+
+.modal-wrapper,
+h2 button {
+	text-align: center;
+}
+
+.modal-wrapper {
+	position: relative;
+	overflow: auto;
+	width: 37rem;
+	height: 30rem;
+	padding: 70px;
+	background-color: #fff;
+	border-radius: 0.625rem;
+	background: #FFF;
+	max-width: calc(90vw - 70px);
+	max-height: calc(90vh - 70px);
+
+	
+}
+
+.OnModule_photo {
+	margin-top: 2rem;
+	position: relative;
+	width: 100%;
+	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+}
+
+.OnModule_photo img {
+	width: 6rem;
+	height: 6.77275rem;
+
+}
+
+.exited {
+	cursor: pointer;
+
+}
+
+.move {
+	position: relative;
+}
+
+.Fa-dele {
+	cursor: pointer;
+	padding-top: .2rem;
+	position: absolute;
+	top: .4rem;
+	right: 0.6rem;
+	color: white;
+	background: #000000;
+	border-radius: 2px;
+	width: 23px;
+	height: 19px;
+}
+
+/*Module ajout photo*/
+.module_add_photo {
+	
+
+	/*width: 39.375rem;
+	height: 41.875rem;
+	border-radius: 0.625rem;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background:rgba(0, 0, 0, 0.08);
+}
+.modal-add-wrapper{
+    /*overflow: auto; /* il apparetera si ya des debordements
+	width: 600px;
+	padding: 20px;
+	background-color: rgb(210, 199, 199);
+	max-width: calc(100vw - 20px);/* vh une fois la taille d l'écran
+	max-height: calc(100vh -20px); 
+	*/
+	position: relative;
+	overflow: auto;
+	width: 37rem;
+	height: 30rem;
+	padding: 70px;
+	background-color: #fff;
+	border-radius: 0.625rem;
+	background: #FFF;
+	max-width: calc(90vw - 70px);
+	max-height: calc(90vh - 70px);
+	
+}
+.btn-add {
+	display: flex;
+	gap: 34rem;
+	
+}
+
+.btn-add .fa-solid {
+
+	cursor: pointer;
+}
+
+.module_add_photo h2 {
+	text-align: center;
+	font-size: 1.625rem;
+	font-weight: 400;
+	color: #000000;
+}
+
+.add_photo-form {
+	position: relative;
+	width: 26.25rem;
+	height: 12.5625rem;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+	margin-top: 1.4rem;
+	border-radius: 0.1875rem;
+	background: #E8F1F6;
+
+}
+
+.fa-regular {
+	margin-top: 1rem;
+}
+
+.add_photo-modal {
+	width: 10.8125rem;
+	height: 2.25rem;
+	border-radius: 3.125rem;
+	background: #CBD6DC;
+}
+
+input[type="file"] {
+	height: 0;
+	width: 0;
+	overflow: hidden;
+}
+/*Gestion input ajout photo*/
+input[type="file"]+label {
+	color: #306685;
+	text-align: center;
+	font-size: 0.875rem;
+	font-weight: 500;
+	border-radius: 3.125rem;
+	background: #CBD6DC;
+	padding: .63rem 2rem;
+	cursor: pointer;
+}
+
+.format_photo {
+	color: #444;
+	text-align: center;
+	font-size: 0.625rem;
+	font-weight: 400;
+}
+
+
+.modal_add_photo{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+.add_categorie, 
+.add_titre_photo {
+	border: none;
+	margin-top:1em ;
+	display: block;
+	width: 26.25rem;
+    height: 3.1875rem;
+	background: #FFF;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+.add-titre, .add-cat > label{
+color: #3D3D3D;
+font-size: 0.975rem;
+font-weight: 500;
+}
+.add-cat, .add-titre{
+	margin-top: 3em;
+}
+.add-cat{
+	border-bottom: 2px solid #B3B3B3 ;
+	padding-bottom: 2em;
+}
+
+.OnModule_photo{
+	border-bottom: 2px solid #B3B3B3 ;
+	padding-bottom: 2em;
+}
+
+.afficher img{
+	width: 14.0625rem;
+	height: 12.5625rem;
+	position: absolute;
+	top: 0;
+    left: 6rem;
+}
+
+/*message Erreur*/
+.erreur{
+	border: 2px solid red;
+}
