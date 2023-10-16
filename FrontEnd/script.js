@@ -144,10 +144,7 @@ async function add_photo(DonneModule) {
         const trash_pic = document.createElement('div');
         Photo_add.appendChild(trash_pic);
         trash_pic.classList.add("move")
-
-        //trash_pic.classList.add(`js-move-${ListeImg[i].id}`);
-
-
+        
         const S_delete = document.createElement('i');
         S_delete.classList.add("fa-solid", "fa-trash-can", "Fa-dele");
         // ADD click fa-solid
@@ -203,7 +200,6 @@ function Ajout_listerner_Trash() {
 
     let recovery_id_delete = document.querySelectorAll(".Fa-dele");
     for (let i = 0; i < recovery_id_delete.length; i++) {
-        //recovery_id_delete[i].addEventListener("click", deleteImage);
         recovery_id_delete[i].addEventListener("click", function (event) {
             const id = event.target.id;
             fetch(`http://localhost:5678/api/works/`);
@@ -220,7 +216,7 @@ function Ajout_listerner_Trash() {
                     if (response.ok) {
                         console.log(`Projet ${id} supprimé avec succès`)
                         alert(`Projet Id ${id} supprimeé`)
-                        //actualisation_des_pages()
+                        actualisation_des_pages()
 
                     }
                     else if (!response.ok) {
