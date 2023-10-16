@@ -1,43 +1,34 @@
 /* Partie login */
 
-// Écoutez l'événement de soumission du formulaire
-export const ButtonSubmit = document.querySelector('#submit')
-ButtonSubmit.addEventListener("click", function (e) {
-    e.preventDefault(); // Empêche la soumission par défaut du formulaire
-    const emailInput = document.querySelector('#email');
-    const passwordInput = document.querySelector('#password');
-    // Récupérez les valeurs des champs email et mot de passe
-    const email = emailInput.value;
-    const password = passwordInput.value;
 
-    // Créez un objet de données d'authentification
-    const authData = {
-        email: email,
-        password: password,
+const Btn_submit = document.querySelector('#submit')
+Btn_submit.addEventListener("click", function (e) {
+    e.preventDefault();
+    const User_email = document.querySelector('#email').value;
+    const User_password = document.querySelector('#password').value;
+    const Donnee_user = {
+        email: User_email,
+        password: User_password,
     };
 
-    // Effectuez une requête POST vers votre API Swagger pour l'authentification
+    //  api 
     fetch("http://localhost:5678/api/users/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(authData),
+        body: JSON.stringify(Donnee_user),
     })
         .then(response => response.json())
 
         .then(data => {
-            // Vérifiez si la réponse contient un token ou des informations d'authentification
             if (data.token) {
-                // Stockez le token dans le stockage local pour une utilisation ultérieure (à des fins de démonstration)
-                localStorage.setItem("token", data.token);
-
-                // Redirigez l'utilisateur vers la page d'accueil ou une autre page sécurisée
                 window.location.href = "index.html";
-
+                localStorage.setItem("token", data.token);
+              
             } else {
-                // Affichez un message d'erreur si l'authentification a échoué
-                alert("Erreur d' authentification ");
+                console.log('Problème de connexion')
+                alert("Mot de passe invalid");
             }
         })
         .catch(error => {
