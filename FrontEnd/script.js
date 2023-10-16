@@ -1,8 +1,6 @@
-
+// function affiche image accueil
 const recupimg = await fetch("http://localhost:5678/api/works");
 const ListeImg = await recupimg.json();
-
-
 function generationDesimages(ListeImg) {
 
     for (let i = 0; i < ListeImg.length; i++) {
@@ -22,20 +20,20 @@ function generationDesimages(ListeImg) {
         mesImages.appendChild(captionp);
     }
 } generationDesimages(ListeImg)
+
 //call function genererimages
 
 
-
-
-
-// Gestion des tries
-const tous = document.querySelector(".tous");
+// Function Gestion des tries
+//recu btn trie
+const All_img = document.querySelector(".tous");
 const objet = document.querySelector(".objet");
 const appartement = document.querySelector(".apprt");
 const hotelEtrestaurant = document.querySelector(".hotr");
+//end recup btn trie
 
-
-tous.addEventListener("click", function () {
+//add listerner btn all_img
+All_img.addEventListener("click", function () {
     const appt = ListeImg.filter(function (images) {
         return images;
     })
@@ -43,8 +41,9 @@ tous.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML = "";
     generationDesimages(appt);
 })
+//end btn btn all_img
 
-
+//add listerner btn trie by objet
 objet.addEventListener('click', function () {
     const tousnosimages = ListeImg.filter(function (images) {
         return images.category.name === "Objets";
@@ -54,6 +53,9 @@ objet.addEventListener('click', function () {
     document.querySelector(".gallery").innerHTML = "";
     generationDesimages(tousnosimages);
 })
+//end btn trie by objet
+
+//add listerner btn trie by appartement
 
 appartement.addEventListener("click", function () {
     const appt = ListeImg.filter(function (images) {
@@ -63,6 +65,9 @@ appartement.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML = "";
     generationDesimages(appt);
 })
+//End btn trie by appartement
+
+//add listerner btn trie by hotel_Et_restaurant
 
 hotelEtrestaurant.addEventListener('click', function () {
     const app = ListeImg.filter(function (images) {
@@ -72,24 +77,17 @@ hotelEtrestaurant.addEventListener('click', function () {
     document.querySelector(".gallery").innerHTML = "";
     generationDesimages(app);
 })
+//End btn trie by hotel_Et_restaurant
 
-// Partie module
+// ************** Partie module *******************//
 /******** Module admin *******/
 
-////
-const gallery_rAdmin = document.querySelector('#portfolio');
-
-function init_Admin() {
-    gallery_rAdmin.innerHTML = "";
-}
-
-
-
-
-
-// Gestion connexion deconnexion
+// ***********
+/*    Gestion connexion deconnexion  */
+//                                              ****************//
 
 const token = localStorage.getItem("token");
+
 const logout = document.querySelector('.logout');
 const section_modifier = document.querySelector('.modifier');
 const PorFolio = document.querySelector(".trie");
@@ -114,13 +112,16 @@ function ModalAdmin() {
 
 } ModalAdmin();
 // deconnexion
-function Exit_admin() {
+function log_out() {
     localStorage.removeItem('token')
     window.location.href = "login.html"
 }
-logout.addEventListener("click", Exit_admin);
+logout.addEventListener("click", logout);
 
-// Gestion modal
+/*************** 
+ *              Gestion modal gestion gallary 
+ *                                           ***************/
+
 
 
 
@@ -131,20 +132,20 @@ let id;
 
 async function add_photo(DonneModule) {
 
-    for (let i = 0; i < DonneModule.length; i++) {
 
+    for (let i = 0; i < DonneModule.length; i++) {
         const Mes_gallery = DonneModule[i];
 
         const img_module = document.createElement("img");
         img_module.src = Mes_gallery.imageUrl;
 
 
-        // Div dsupression
+        // Div supression
         const trash_pic = document.createElement('div');
         Photo_add.appendChild(trash_pic);
         trash_pic.classList.add("move")
 
-        trash_pic.classList.add(`js-move-${ListeImg[i].id}`);
+        //trash_pic.classList.add(`js-move-${ListeImg[i].id}`);
 
 
         const S_delete = document.createElement('i');
@@ -152,19 +153,15 @@ async function add_photo(DonneModule) {
         // ADD click fa-solid
         const divD_Fa = document.createElement("div")
         trash_pic.appendChild(divD_Fa)
-        S_delete.setAttribute("id", "infos")
+        S_delete.setAttribute("id", DonneModule[i].id)
 
         //
         divD_Fa.appendChild(S_delete)
         trash_pic.appendChild(img_module)
 
         const mesImages = document.createElement("figure");
-        divD_Fa.classList.add(DonneModule[i].id, "id-delete");
+        divD_Fa.classList.add(DonneModule[i].id);
         Photo_add.appendChild(trash_pic);
-
-
-        // addEcoute i
-
 
     }
     Ajout_listerner_Trash()
@@ -202,13 +199,40 @@ const stopPro = (e) => {
 }
 
 
-// Gestion suppresion image
-
 function Ajout_listerner_Trash() {
 
-    let recovery_id_delete = document.querySelectorAll(".id-delete");
+    let recovery_id_delete = document.querySelectorAll(".Fa-dele");
     for (let i = 0; i < recovery_id_delete.length; i++) {
-        recovery_id_delete[i].addEventListener("click", deleteImage);
+        //recovery_id_delete[i].addEventListener("click", deleteImage);
+        recovery_id_delete[i].addEventListener("click", function (event) {
+            const id = event.target.id;
+            fetch(`http://localhost:5678/api/works/`);
+            console.log('test')
+            console.log(id)
+            const response = fetch(`http://localhost:5678/api/works/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log(`Projet ${id} supprimé avec succès`)
+                        alert(`Projet Id ${id} supprimeé`)
+                        //actualisation_des_pages()
+
+                    }
+                    else if (!response.ok) {
+                        console.log('Suppression non autorisée ')
+                    }
+                })
+                // Envoie erreur si promesse non respectée
+                .catch(error => {
+                    console.error('Erreur de suppression:', error);
+                })
+
+        })
 
     }
 
@@ -219,26 +243,7 @@ function Ajout_listerner_Trash() {
 
 async function deleteImage() {
 
-    await fetch(`http://localhost:5678/api/works/${this.classList[0]}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-        },
-    })
-        .then(response => {
-            if (response.ok) {
-                console.log("Projet " + this.classList[0] + " supprimé avec succès")
-                actualisation_des_pages(this.classList[0])
-            }
-            else if (!response.ok) {
-                console.log('Suppression non autorisée ')
-            }
-        })
-        // Envoie erreur si promesse non respectée
-        .catch(error => {
-            console.error('Erreur de suppression:', error);
-        })
+
 
 }
 //
@@ -302,14 +307,14 @@ const see_image = (e) => {
     const div_body = document.querySelector(".add_photo-form")
     div_body.appendChild(div)
     div.appendChild(img)
-    if (file_selected .type.startsWith("image/")) {
+    if (file_selected.type.startsWith("image/")) {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             img.src = e.target.result;
         };
-        reader.readAsDataURL(file_selected );
+        reader.readAsDataURL(file_selected);
     } else {
-        img.src = ""; 
+        img.src = "";
     }
 }
 
@@ -329,22 +334,32 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
     const ID_cate = document.querySelector(".add_categorie").value;
     const input = document.querySelector(id)
     //console.log('test')
-   if (image_url === undefined || titre_image === "" || ID_cate === "") {
-       const input = document.querySelector('#titre')
-       const cate_gor= document.querySelector("#catgorie")
-       const pc = document.querySelector("#errorc")
-       const p = document.querySelector("#error")
-       const photo = document.querySelector(".add_photo-form")
-       input.classList.add("erreur")
-       cate_gor.classList.add('erreur')
-       photo.classList.add('erreur')
+    if (image_url === undefined || titre_image === "" || ID_cate === "") {
+        const input = document.querySelector('#titre')
+        const cate_gor = document.querySelector("#catgorie")
+        const pc = document.querySelector("#errorc")
+        const p = document.querySelector("#error")
+        const photo = document.querySelector(".add_photo-form")
+        input.classList.add("erreur")
+        cate_gor.classList.add('erreur')
+        photo.classList.add('erreur')
+        p.innerHTML = "Veuillez rentrer le titre de l'image !"
+        pc.innerHTML = `Veuillez choisir une catégorie ! `
+    } else if (image_url !== null && titre_image !== null && ID_cate === "") {
+        const input = document.querySelector('#titre')
+        const cate_gor = document.querySelector("#catgorie")
+        const pc = document.querySelector("#errorc")
+        const p = document.querySelector("#error")
+        const photo = document.querySelector(".add_photo-form")
 
-       p.innerHTML = "Veuillez rentrer le titre de l'image !"
-       pc.innerHTML = `Veuillez choisir une catégorie ! `
-   } else {
+        input.classList.add("norreur")
+        photo.classList.add('norreur')
+
+        p.innerHTML = "Veuillez rentrer le titre de l'image !"
+        pc.innerHTML = `Veuillez choisir une catégorie ! `
 
 
-
+    } else {
         const Data = new FormData();
         Data.append('title', titre_image)
         Data.append('image', image_url)
@@ -365,7 +380,7 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
                     alert("Bravo votre projet est ajouté avec succès")
                 } else if (!response.ok) {
                     console.log('Ajout non autorisée ')
-                    alert(`Erreur, votre projet n est pas ajouté !`)
+                    alert(`Erreur de remplissage, veuillez verifier vos informations !`)
 
                 }
             })
@@ -374,41 +389,8 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
                 console.error('Erreur :', error);
             })
 
-   }
+    }
 });
 
 
 
-
-
-
-/*
-
-// Attachez un gestionnaire d'événements aux boutons de suppression
-document.querySelectorAll('#delete').forEach(button => {
-    button.addEventListener('click', function () {
-        const idToDelete = this.getAttribute('data-id'); // Obtenez l'ID à partir de l'attribut data-id
-        deleteImage(idToDelete); // Appelez la fonction pour supprimer l'élément avec l'ID spécifique
-        console.log("fff")
-    });
-});
-
-
-
-
-const galleryModal = document.querySelector("#gallery-modal");
- galleryModal.addEventListener("click", async function (e) 
- {
-     if (e.target.classList.contains("trash-modal"))
-  { 
-  const figure = e.target.closest("figure"); 
-  const articleId = figure.dataset.id; 
-  console.log(articleId); 
-  try { 
-    const response = await fetch( `http://localhost:5678/api/works/${articleId}`,
-
-
-    const figure = e.target.closest("figure"); 
-    const articleId = figure.dataset.id; console.log(articleId);
-     try { 
-        const response = await fetch( `http://localhost:5678/api/works/${articleId}`, */
