@@ -112,11 +112,11 @@ function ModalAdmin() {
 
 } ModalAdmin();
 // deconnexion
-function log_out() {
+function Exit_admin() {
     localStorage.removeItem('token')
     window.location.href = "login.html"
 }
-logout.addEventListener("click", logout);
+logout.addEventListener("click", Exit_admin);
 
 /*************** 
  *              Gestion modal gestion gallary 
@@ -219,8 +219,8 @@ function Ajout_listerner_Trash() {
                 .then(response => {
                     if (response.ok) {
                         console.log(`Projet ${id} supprimé avec succès`)
-                        alert(`Projet Id ${id} supprimeé`)
-                        //actualisation_des_pages()
+                        alert(`Projet ${id} supprimé`)
+                        actualisation_des_pages()
 
                     }
                     else if (!response.ok) {
