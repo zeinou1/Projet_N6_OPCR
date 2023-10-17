@@ -79,7 +79,9 @@ hotelEtrestaurant.addEventListener('click', function () {
 })
 //End btn trie by hotel_Et_restaurant
 
-// ************** Partie module *******************//
+/* ********************************************* 
+                                              Partie module 
+                                                            *******************************************/
 /******** Module admin *******/
 
 // ***********
@@ -93,7 +95,7 @@ const section_modifier = document.querySelector('.modifier');
 const PorFolio = document.querySelector(".trie");
 const h2 = document.querySelector("#h2");
 
-
+//** Modal Admin **/
 function ModalAdmin() {
     document.querySelectorAll(".modal_adm").forEach(a => {
         if (token === null) {
@@ -117,10 +119,11 @@ function Exit_admin() {
     window.location.href = "login.html"
 }
 logout.addEventListener("click", Exit_admin);
+//End Connexion and Dec
 
-/*************** 
- *              Gestion modal gestion gallary 
- *                                           ***************/
+/***********************************
+ *                                  Gestion modal gestion gallary admin
+ *                                                                     ********************************************/
 
 
 
@@ -131,8 +134,6 @@ const Photo_add = document.querySelector('.OnModule_photo')
 let id;
 
 async function add_photo(DonneModule) {
-
-
     for (let i = 0; i < DonneModule.length; i++) {
         const Mes_gallery = DonneModule[i];
 
@@ -144,7 +145,10 @@ async function add_photo(DonneModule) {
         const trash_pic = document.createElement('div');
         Photo_add.appendChild(trash_pic);
         trash_pic.classList.add("move")
-        
+
+        //trash_pic.classList.add(`js-move-${ListeImg[i].id}`);
+
+
         const S_delete = document.createElement('i');
         S_delete.classList.add("fa-solid", "fa-trash-can", "Fa-dele");
         // ADD click fa-solid
@@ -165,9 +169,13 @@ async function add_photo(DonneModule) {
 
 } add_photo(DonneModule)
 
-// Gestion open modal
+//End modale Admin
 
-let modal = null; // savoir quelle boite modale actualement afficher
+/********************************************** 
+ *                                        Gestion open modal 
+ *                                                          ******************************/
+
+let modal = null; 
 const openModule = function (e) {
     e.preventDefault();
     const target = document.querySelector(e.target.getAttribute('href'))
@@ -194,8 +202,11 @@ const closeModal = (e) => {
 const stopPro = (e) => {
     e.stopPropagation();
 }
+//End Close modal admin
 
-
+/********************************************
+ *                                 Suppression projet
+ *                                  ************************************************* */
 function Ajout_listerner_Trash() {
 
     let recovery_id_delete = document.querySelectorAll(".Fa-dele");
@@ -235,14 +246,7 @@ function Ajout_listerner_Trash() {
 
 }
 
-// Supprimer le projet
-
-async function deleteImage() {
-
-
-
-}
-//
+// End del projet
 
 function actualisation_des_pages(i) {
     const ProjetAdminActu = document.querySelector(`.js-move-${i}`);
@@ -252,9 +256,7 @@ function actualisation_des_pages(i) {
     ActuProjetAccueil.style.display = "none";
 }
 
-// Ajout projet
 
-// Création modale ajout projet
 let modal2 = null
 const open_Modal_add_projet = function (e) {
     e.preventDefault()
@@ -267,8 +269,7 @@ const open_Modal_add_projet = function (e) {
 
 }
 
-
-//Gestion fermeture modal 2
+//Gestion fermeture modal 2 Add Pic
 
 const closeModal_add_projet = (e) => {
     if (modal2 === null) return
@@ -291,10 +292,11 @@ document.querySelectorAll('.js-modale').forEach(a => {
     a.addEventListener('click', closeModal_add_projet);
     a.addEventListener('click', openModule);
 })
+// End close module2
 
-// Partie ajout projet
 
-// Afffichage image
+// Affichage image
+
 const see_image = (e) => {
     const file_selected = e.target.files[0];
     const img = document.createElement("img")
@@ -313,12 +315,14 @@ const see_image = (e) => {
         img.src = "";
     }
 }
-
 document.querySelectorAll('.add_photo').forEach(input => {
     input.addEventListener('change', see_image)
 });
+// End Affichage image
 
-
+/************************************** 
+ *                                     Ajout Projet
+ *                                                *******************************************/
 
 
 
@@ -348,9 +352,6 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
         const p = document.querySelector("#error")
         const photo = document.querySelector(".add_photo-form")
 
-        input.classList.add("norreur")
-        photo.classList.add('norreur')
-
         p.innerHTML = "Veuillez rentrer le titre de l'image !"
         pc.innerHTML = `Veuillez choisir une catégorie ! `
 
@@ -373,20 +374,21 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
             .then(response => {
                 if (response.ok) {
                     console.log("Projet ajouté avec succès")
-                    alert("Bravo votre projet est ajouté avec succès")
+                    alert("Bravo votre projet a été ajouté avec succès")
                 } else if (!response.ok) {
                     console.log('Ajout non autorisée ')
-                    alert(`Erreur de remplissage, veuillez verifier vos informations !`)
+                    alert(`Ajout non autorisée!`)
 
                 }
             })
             // Envoie erreur si promesse non respectée
             .catch(error => {
-                console.error('Erreur :', error);
+                console.error('Erreur token :', error);
             })
 
     }
 });
+// End ajout Projet
 
 
 
