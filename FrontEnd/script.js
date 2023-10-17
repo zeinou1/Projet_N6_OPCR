@@ -77,16 +77,16 @@ hotelEtrestaurant.addEventListener('click', function () {
     document.querySelector(".gallery").innerHTML = "";
     generationDesimages(app);
 })
-//End btn trie by hotel_Et_restaurant
+//End btn trie by hotel_and_restaurant
 
 /* ********************************************* 
                                               Partie module 
                                                             *******************************************/
 /******** Module admin *******/
 
-// ***********
-/*    Gestion connexion deconnexion  */
-//                                              ****************//
+// ********************************
+/*                                  Gestion connexion deconnexion  */
+//                                                                  *****************************//
 
 const token = localStorage.getItem("token");
 
@@ -96,7 +96,7 @@ const PorFolio = document.querySelector(".trie");
 const h2 = document.querySelector("#h2");
 
 //** Modal Admin **/
-function ModalAdmin() {
+async function ModalAdmin() {
     document.querySelectorAll(".modal_adm").forEach(a => {
         if (token === null) {
             return;
@@ -105,7 +105,7 @@ function ModalAdmin() {
             a.removeAttribute("aria-hidden")
             a.removeAttribute("style")
             logout.innerHTML = "Logout";
-            section_modifier.style.display = "block"
+            section_modifier.style.display = ""
             PorFolio.style.display = "none";
             h2.style.marginBottom = 0;
 
@@ -204,8 +204,8 @@ const stopPro = (e) => {
 //End Close modal admin
 
 /********************************************
- *                                 Suppression projet
- *                                  ************************************************* */
+ *                                            Suppression projet
+ *                                                    ************************************************* */
 function Ajout_listerner_Trash() {
 
     let recovery_id_delete = document.querySelectorAll(".Fa-dele");
