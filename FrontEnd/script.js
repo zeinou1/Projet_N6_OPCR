@@ -96,7 +96,7 @@ const PorFolio = document.querySelector(".trie");
 const h2 = document.querySelector("#h2");
 
 //** Modal Admin **/
-function ModalAdmin() {
+async function ModalAdmin() {
     document.querySelectorAll(".modal_adm").forEach(a => {
         if (token === null) {
             return;
@@ -105,7 +105,7 @@ function ModalAdmin() {
             a.removeAttribute("aria-hidden")
             a.removeAttribute("style")
             logout.innerHTML = "Logout";
-            section_modifier.style.display = "block"
+            section_modifier.style.display = ""
             PorFolio.style.display = "none";
             h2.style.marginBottom = 0;
 
