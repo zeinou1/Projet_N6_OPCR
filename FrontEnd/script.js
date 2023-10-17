@@ -211,7 +211,7 @@ function Ajout_listerner_Trash() {
 
     let recovery_id_delete = document.querySelectorAll(".Fa-dele");
     for (let i = 0; i < recovery_id_delete.length; i++) {
-        recovery_id_delete[i].addEventListener("click", function (event) {
+        recovery_id_delete[i].addEventListener("click", async function (event) {
             const id = event.target.id;
             fetch(`http://localhost:5678/api/works/`);
             console.log('test')
@@ -226,8 +226,8 @@ function Ajout_listerner_Trash() {
                 .then(response => {
                     if (response.ok) {
                         console.log(`Projet ${id} supprimé avec succès`)
-                        alert(`Projet Id ${id} supprimeé`)
-                        //actualisation_des_pages()
+                        alert(`Projet ${id} supprimeé`)
+                        actualisation_des_pages()
 
                     }
                     else if (!response.ok) {
