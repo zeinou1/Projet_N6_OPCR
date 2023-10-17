@@ -226,7 +226,7 @@ function Ajout_listerner_Trash() {
                 .then(response => {
                     if (response.ok) {
                         console.log(`Projet ${id} supprimé avec succès`)
-                        alert(`Projet ${id} supprimeé`)
+                        alert(`Projet ${id} supprimé`)
                         actualisation_des_pages()
 
                     }
