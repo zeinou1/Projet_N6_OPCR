@@ -2,7 +2,7 @@
 
 
 const Btn_submit = document.querySelector('#submit')
-Btn_submit.addEventListener("click", function (e) {
+Btn_submit.addEventListener("click", async function (e) {
     e.preventDefault();
     const User_email = document.querySelector('#email').value;
     const User_password = document.querySelector('#password').value;
@@ -28,11 +28,11 @@ Btn_submit.addEventListener("click", function (e) {
               
             } else {
                 console.log('Problème de connexion')
-                alert("Mot de passe invalid");
+                alert("Problème de connexion");
             }
         })
         .catch(error => {
-            console.error("Erreur d'authentification : " + error);
+            console.error("Authentification erronée : " + error);
         });
 });
 //End login
