@@ -333,6 +333,7 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
     const titre_image = document.querySelector(".add_titre_photo").value;
     const ID_cate = document.querySelector(".add_categorie").value;
     const input = document.querySelector(id)
+
     //console.log('test')
     if (image_url === undefined || titre_image === "" || ID_cate === "") {
         const input = document.querySelector('#titre')
@@ -364,6 +365,7 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
 
 
         console.log(Array.from(Data))
+
         await fetch(`http://localhost:5678/api/works/`, {
             method: 'POST',
             headers: {
@@ -376,8 +378,8 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
                     console.log("Projet ajouté avec succès")
                     alert("Bravo votre projet a été ajouté avec succès")
                 } else if (!response.ok) {
-                    console.log('Ajout non autorisée ')
-                    alert(`Ajout non autorisée!`)
+                    console.log('Ajout non autorisé ')
+                    alert(`Ajout non autorisé!`)
 
                 }
             })
