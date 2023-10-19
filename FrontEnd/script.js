@@ -24,7 +24,7 @@ function generationDesimages(ListeImg) {
 //call function genererimages
 
 
-// Function Gestion des tries
+// Function Gestion des trie
 //recu btn trie
 const All_img = document.querySelector(".tous");
 const objet = document.querySelector(".objet");
@@ -354,13 +354,11 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
         p.innerHTML = "Veuillez rentrer le titre de l'image !"
         pc.innerHTML = `Veuillez choisir une catégorie ! `
 
-
     } else {
         const Data = new FormData();
         Data.append('title', titre_image)
         Data.append('image', image_url)
         Data.append('category', ID_cate)
-
 
         console.log(Array.from(Data))
         await fetch(`http://localhost:5678/api/works/`, {
@@ -377,10 +375,9 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
                 } else if (!response.ok) {
                     console.log('Ajout non autorisée ')
                     alert(`Ajout non autorisée!`)
-
                 }
             })
-            // Envoie erreur si promesse non respectée
+
             .catch(error => {
                 console.error('Erreur token :', error);
             })
