@@ -377,7 +377,7 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
                 if (response.ok) {
                     console.log("Projet ajouté avec succès")
                     alert("Bravo votre projet a été ajouté avec succès")
-                } else if (!response.ok) {
+                } else if(!response.ok){
                     console.log('Ajout non autorisé ')
                     alert(`Ajout non autorisé!`)
 
