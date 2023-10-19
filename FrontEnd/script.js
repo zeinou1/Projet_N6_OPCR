@@ -141,7 +141,7 @@ async function add_photo(DonneModule) {
         img_module.src = Mes_gallery.imageUrl;
 
 
-        // Div supression
+        // Div suppression
         const trash_pic = document.createElement('div');
         Photo_add.appendChild(trash_pic);
         trash_pic.classList.add("move")
