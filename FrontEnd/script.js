@@ -191,8 +191,8 @@ const closeModal = (e) => {
     if (modal === null) return;
     e.preventDefault();
     modal.style.display = "none";
-    moadal.setAttribute('aria-hidden', 'true')
-    moadal.removeAttribute("aria-modal")
+    modal.setAttribute('aria-hidden', 'true')
+    modal.removeAttribute("aria-modal")
     modal.removeEventListener('click', closeModal);
     modal.querySelector('.exited').removeEventListener("click", closeModal);
     modal = null;
