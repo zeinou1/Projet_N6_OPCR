@@ -1,6 +1,7 @@
 // function affiche image accueil
 const recupimg = await fetch("http://localhost:5678/api/works");
 const ListeImg = await recupimg.json();
+
 function generationDesimages(ListeImg) {
 
     for (let i = 0; i < ListeImg.length; i++) {
@@ -19,7 +20,9 @@ function generationDesimages(ListeImg) {
         mesImages.appendChild(img_banner)
         mesImages.appendChild(captionp);
     }
-} generationDesimages(ListeImg)
+}
+
+generationDesimages(ListeImg)
 
 //call function genererimages
 
@@ -100,8 +103,7 @@ async function ModalAdmin() {
     document.querySelectorAll(".modal_adm").forEach(a => {
         if (token === null) {
             return;
-        }
-        else {
+        } else {
             a.removeAttribute("aria-hidden")
             a.removeAttribute("style")
             logout.innerHTML = "Logout";
@@ -112,12 +114,16 @@ async function ModalAdmin() {
         }
     });
 
-} ModalAdmin();
+}
+
+ModalAdmin();
+
 // deconnexion
 function Exit_admin() {
     localStorage.removeItem('token')
     window.location.href = "login.html"
 }
+
 logout.addEventListener("click", Exit_admin);
 //End Connexion and Dec
 
@@ -167,15 +173,17 @@ async function add_photo(DonneModule) {
     }
     Ajout_listerner_Trash()
 
-} add_photo(DonneModule)
+}
+
+add_photo(DonneModule)
 
 //End modale Admin
 
-/********************************************** 
- *                                        Gestion open modal 
+/**********************************************
+ *                                        Gestion open modal
  *                                                          ******************************/
 
-let modal = null; 
+let modal = null;
 const openModule = function (e) {
     e.preventDefault();
     const target = document.querySelector(e.target.getAttribute('href'))
@@ -202,6 +210,7 @@ const closeModal = (e) => {
 const stopPro = (e) => {
     e.stopPropagation();
 }
+
 //End Close modal admin
 
 /********************************************
@@ -229,8 +238,7 @@ function Ajout_listerner_Trash() {
                         alert(`Projet ${id} supprimé`)
                         actualisation_des_pages()
 
-                    }
-                    else if (!response.ok) {
+                    } else if (!response.ok) {
                         console.log('Suppression non autorisée ')
                     }
                 })
@@ -320,7 +328,7 @@ document.querySelectorAll('.add_photo').forEach(input => {
 });
 // End Affichage image
 
-/************************************** 
+/**************************************
  *                                     Ajout Projet
  *                                                *******************************************/
 
@@ -374,10 +382,10 @@ formula_Add_projet.addEventListener("submit", async (e, id) => {
             body: Data
         })
             .then(response => {
-                if (response.ok) {
+                if (response.status === 201) {
                     console.log("Projet ajouté avec succès")
                     alert("Bravo votre projet a été ajouté avec succès")
-                } else if(!response.ok){
+                } else if (!response.ok) {
                     console.log('Ajout non autorisé ')
                     alert(`Ajout non autorisé!`)
 
